@@ -52,27 +52,33 @@ export default {
   ],
 
   auth: {
-  strategies: {
-    local: {
-      endpoints: {
-        login: { url: '/login', method: 'post', propertyName: 'token' },
-        logout: { url: '/logout', method: 'post' },
-        user: { url: '/me', method: 'get', propertyName: 'data' }
-      },
-      // tokenRequired: true,
-      // tokenType: 'bearer',
-      // globalToken: true,
-      // autoFetchUser: true
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/logout', method: 'post' },
+          user: { url: '/me', method: 'get', propertyName: 'data' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+        // autoFetchUser: true
+      }
     }
-  }
-},
+  },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {
-    baseUrl:process.env.API_URL
+    baseUrl: ''
   },
-
+  // publicRuntimeConfig: {},
+  privateRuntimeConfig: {
+    axios: {
+      baseURL: process.env.API_URL
+    }
+  },
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
   }
+
 }
