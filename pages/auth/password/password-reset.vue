@@ -14,29 +14,28 @@
                     </p>
                 </alert-success>
                 <div class="form-group">
-                    <input
-                        type="text"
-                        readonly
-                        v-model.trim="form.email"
-                        name="email"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid': form.errors.has('email') }"
-                        placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                                      <base-input
+                    :form="form"
+                    field="email"
+                    v-model="form.email"
+                    placeholder="Email"
+                  ></base-input>
                 </div>
                 <div class="form-group">
-                    <input
-                        type="password"
-                        v-model.trim="form.password"
-                        name="password"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid': form.errors.has('password') }"
-                        placeholder="New password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
+                                   <base-input
+                  :form="form"
+                  field="password"
+                  v-model="form.password"
+                  placeholder="password"
+                  ></base-input>
                 </div>
                 <div class="form-group">
+                                   <base-input
+                  :form="form"
+                  field="password"
+                  v-model="form.password_confirmation"
+                  placeholder="Confirm new password"
+                  ></base-input>
                     <input
                         type="password"
                         v-model.trim="form.password_confirmation"
@@ -47,15 +46,9 @@
                 </div>
                 
                 <div class="text-right">
-                    <button 
-                        type="submit" 
-                        :disabled="form.busy"
-                        class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase">
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
-                        Reset Password
-                    </button>
+                    <base-button :loading="form.busy">
+                    Reset Password
+                  </base-button>
                 </div>
             </form>
         </div>

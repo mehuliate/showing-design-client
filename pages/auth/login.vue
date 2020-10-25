@@ -12,40 +12,29 @@
                     </nuxt-link>
                 </alert-error>
                 <div class="form-group">
-                    <input
-                        type="text"
-                        v-model.trim="form.email"
-                        name="email"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid': form.errors.has('email') }"
-                        placeholder="Email"
-                    />
-                    <has-error :form="form" field="email"></has-error>
+                  <base-input
+                    :form="form"
+                    field="email"
+                    v-model="form.email"
+                    placeholder="Email"
+                  ></base-input>
                 </div>
                 <div class="form-group">
-                    <input
-                        type="password"
-                        v-model.trim="form.password"
-                        name="password"
-                        class="form-control form-control-lg font-14 fw-300"
-                        :class="{ 'is-invalid': form.errors.has('password') }"
-                        placeholder="Password"
-                    />
-                    <has-error :form="form" field="password"></has-error>
+<base-input
+            :form="form"
+            field="password"
+            inputType="password"
+            v-model="form.password"
+            placeholder="Password"
+          ></base-input>
                 </div>
                 <div class="mt-4 mb-4 clearfix">
                     <nuxt-link :to="{ name: 'password.email'}" class="forgot-pass color-blue font-14 fw-400"> Forgot password? </nuxt-link>
                 </div>
                 <div class="text-right">
-                    <button 
-                        type="submit" 
-                        :disabled="form.busy"
-                        class="btn btn-primary primary-bg-color font-16 fw-500 text-uppercase">
-                        <span v-if="form.busy">
-                            <i class="fas fa-spinner fa-spin"></i>
-                        </span>
-                        Login
-                    </button>
+                  <base-button :loading="form.busy">
+                    Login
+                  </base-button>
                 </div>
                 <p class="font-14 fw-400 text-center mt-4">
                     Don't have an account yet?
