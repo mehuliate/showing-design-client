@@ -12,8 +12,8 @@ const routes = [
     { path: '/verification/resend', name: 'verification.resend', component: page('auth/verification/resend.vue') },
     { path: '/password/email', name: 'password.email', component: page('auth/password/reset-email.vue') },
     { path: '/password/reset/:token', name: 'password.reset', component: page('auth/password/password-reset.vue') },
-    { path: '/upload', name: 'design.upload', component: page('user/designs/create.vue') },
-    { path: '/design/:id/edit', name: 'design.edit', component: page('user/designs/edit.vue') },
+    { path: '/upload', name: 'designs.upload', component: page('user/designs/create.vue') },
+    { path: '/designs/:id/edit', name: 'design.edit', component: page('user/designs/edit.vue') },
 ];
 
 export function createRouter() {
