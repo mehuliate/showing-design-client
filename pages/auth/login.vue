@@ -57,18 +57,20 @@ export default {
     }
   },
   methods: {
-    submit() {
+submit() {
+  console.log(this.form)
       this.$auth
         .loginWith('local', {
-          data: this.form,
+          data: this.form
         })
-        .then((res) => {
-          console.log(res)
+        .then(res => {
+          console.log(res);
         })
-        .catch((e) => {
-          this.form.errors.set(e.response.data.errors)
-        })
-    },
+        .catch(e => {
+          this.form.errors.set(e.response.data.errors);
+        });
+
+    }
   },
 }
 </script>

@@ -44,6 +44,7 @@
 <script>
 import Slim from '@/components/slim/slim.vue'
 export default {
+  middleware: ['auth'],
   components: {
     'slim-cropper': Slim,
   },

@@ -103,9 +103,9 @@
                 </div>
 
                 <div class="text-right">
-                  <nuxt-link :to="{ name: 'settings.designs' }"
+                  <!-- <nuxt-link :to="{ name: 'settings.designs' }"
                     >Cancel</nuxt-link
-                  >
+                  > -->
                   <base-button :loading="form.busy">
                     Update Design
                   </base-button>
@@ -162,9 +162,10 @@ export default {
       this.form
         .put(`/designs/${this.$route.params.id}`)
         .then((res) => {
-          setTimeout(() => {
-            this.$router.push({ name: 'settings.designs' })
-          }, 1000)
+          console.log(res)
+          // setTimeout(() => {
+          //   this.$router.push({ name: 'settings.designs' })
+          // }, 1000)
         })
         .catch((err) => console.log(err.response))
     },
