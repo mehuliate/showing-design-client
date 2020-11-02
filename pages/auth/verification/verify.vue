@@ -5,7 +5,6 @@
               Email Verification
           </h1>
           <form class="auth-form">
-            {{name}}
               <div class="form-group" v-if="success">
                   <div class="alert alert-success">
                       {{status}}

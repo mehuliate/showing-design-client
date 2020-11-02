@@ -103,9 +103,9 @@
                 </div>
 
                 <div class="text-right">
-                  <!-- <nuxt-link :to="{ name: 'settings.designs' }"
+                  <nuxt-link :to="{ name: 'settings.designs' }"
                     >Cancel</nuxt-link
-                  > -->
+                  >
                   <base-button :loading="form.busy">
                     Update Design
                   </base-button>
@@ -124,7 +124,7 @@
 import Form from 'vform'
 import BetterInputTag from 'better-vue-input-tag'
 export default {
-  middleware: ['auth'],
+  // middleware: ['auth'],
   components: {
     BetterInputTag,
   },
@@ -143,14 +143,16 @@ export default {
 
   async asyncData({ $axios, params, error, redirect }) {
     try {
-      const design = await $axios.$get(`/designs/${params.id}`)
+      //buat router yng baru untuk khusus yang punya data aja yg bisa lihat
+      const design = await $axios.$get(`/designs/${params.id}/byUser`)
       const teams = await $axios.$get(`/teams/user/teams`)
       return { design: design.data, teams: teams.data }
     } catch (err) {
       if (err.response.status === 404) {
         error({ statusCode: 404, message: 'Data not found' })
-        // } else if (err.response.status === 401) {
-        //   redirect('/login')
+      } else if (err.response.status === 401) {
+        //jika tidak mau pakai middleware bisa pakai cara ini, pakai respon.status code
+        redirect('/login')
       } else {
         error({ statusCode: 500, message: 'Internal server error' })
       }
@@ -162,10 +164,9 @@ export default {
       this.form
         .put(`/designs/${this.$route.params.id}`)
         .then((res) => {
-          console.log(res)
-          // setTimeout(() => {
-          //   this.$router.push({ name: 'settings.designs' })
-          // }, 1000)
+          setTimeout(() => {
+            this.$router.push({ name: 'settings.designs' })
+          }, 1000)
         })
         .catch((err) => console.log(err.response))
     },
